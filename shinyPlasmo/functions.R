@@ -1,21 +1,23 @@
 # Loading functions -------------------------------------------------------
 
 # Load packages quietly
-sshhh <- function(a.package){
-  suppressWarnings(suppressPackageStartupMessages(
-    library(a.package, character.only=TRUE)))
-}
+#sshhh <- function(a.package){
+#  suppressWarnings(suppressPackageStartupMessages(
+#    library(a.package, character.only=TRUE)))
+#}
 
 # Load essentials
 load_essentials <- function() {
-  sshhh("shiny")
-  sshhh("tidyverse")
-  sshhh("stringr")
-  sshhh("magrittr")
-  sshhh("cowplot")
-  sshhh("scales")
-  sshhh("org.Pf.plasmo.db")
-  #sshhh("BSgenome.Pfalciparum.PlasmoDB.v24")
+  require(shiny)
+  require(dplyr)
+  require(ggplot2)
+  require(stringr)
+  require(magrittr)
+  require(cowplot)
+  require(scales)
+  require(gridExtra)
+  #library("org.Pf.plasmo.db")
+  #library("BSgenome.Pfalciparum.PlasmoDB.v24")
 }
 
 # Plot Colors -------------------------------------------------------------
@@ -45,12 +47,12 @@ df2list <- function(df, key, value) {
 }
 
 # Retrieve gene names
-get_gene_names <- function() {
-  require(org.Pf.plasmo.db)
-  gene_names <- as.data.frame(org.Pf.plasmoGENENAME)
-  gene_names <- setNames(c(gene_names$gene_name), gene_names$gene_id)
-  return(gene_names)
-}
+#get_gene_names <- function() {
+#  require(org.Pf.plasmo.db)
+#  gene_names <- as.data.frame(org.Pf.plasmoGENENAME)
+#  gene_names <- setNames(c(gene_names$gene_name), gene_names$gene_id)
+#  return(gene_names)
+#}
 
 # Plot functions ----------------------------------------------------------
 
@@ -164,7 +166,6 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 plot_gene_list <- function(func, df, list, output) {
   
   theme_set(theme_cowplot())
-  require(gridExtra)
   # match function name
   plotting_func <- match.fun(func)
   pdf(output, onefile = TRUE)

@@ -1,0 +1,10 @@
+name: shinyplasmo
+title:
+username:
+account: pzross
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1622060
+bundleId: 2697094
+url: https://pzross.shinyapps.io/shinyplasmo/
+when: 1577659047.16656

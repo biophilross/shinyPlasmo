@@ -1,21 +1,23 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+# load shiny functions
 library(shiny)
+# Load libraries
+source("functions.R")
+load_essentials()
+theme_set(theme_cowplot())
 
-# Define UI for application that draws a histogram
+# Load data
+abund <- readRDS("abund.rds")
+annot <- readRDS("annotations.rds")
+
+# Define UI for application
 shinyUI(
     
     fluidPage(
 
         # Application title
         titlePanel("Transcriptomes from three strains of Plasmodium falciparum"),
+        
+        hr(),
     
         #headerPanel(
         #    img(src = '',width = "100%")##, height = '100px', width = '100px')
@@ -31,7 +33,7 @@ shinyUI(
                 helpText("Choose gene of interest")
             ),
 
-            # Show a plot of the generated distribution
+            # Show plots and annotation table
             mainPanel(
                 fluidRow(
                     column(6,
